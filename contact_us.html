@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang=en data-add_this_id='' data-img-load="eager">
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+
+    <title>
+        CONTACT|US
+    </title>
+
+
+
+
+    <meta NAME="Robots" CONTENT="noimageindex, nomediaindex, noimageclick" />
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+
+
+    <link rel="shortcut icon" href="/images/favicon.ico">
+
+
+
+
+
+
+    <!--[if (!IE)|(gte IE 8)]><!-->
+    <link href="https://t.infibeam.com/packages/bootstrap-datauri.css?1593009617" media="all" rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <!--[if lte IE 7]>
+<link href="https://t.infibeam.com/packages/bootstrap.css?1593009617" media="all" rel="stylesheet" type="text/css" />
+<![endif]-->
+    <!--[if (!IE)|(gte IE 8)]><!-->
+    <link href="https://t.infibeam.com/exthemes/03/37/207/theme-0337207-1/stylesheets/site-datauri.css?1515124972" media="all" rel="stylesheet" type="text/css" />
+    <!--<![endif]-->
+    <!--[if lte IE 7]>
+          <link href="https://t.infibeam.com/exthemes/03/37/207/theme-0337207-1/stylesheets/site-.css?1515124972" media="screen" rel="stylesheet" type="text/css" />
+        <![endif]-->
+
+
+
+
+    <!--[if lt IE 10]>
+      <script type="text/javascript" src="/javascripts/respondIE/respondmore.min.js"></script>
+      <link href= 'https://t.infibeam.com/javascripts/respondIE/respond-proxy.html' id="respond-proxy" rel="respond-proxy" />
+      <link href="/javascripts/respondIE/respond.proxy.gif" id="respond-redirect" rel="respond-redirect" />
+      <script src="/javascripts/respondIE/respond.proxy.js"></script>
+    <![endif]-->
+
+
+    <link href="https://t.infibeam.com/stylesheets/formtastic.css?1429854677" media="screen" rel="stylesheet" type="text/css" />
+    <link href="https://t.infibeam.com/stylesheets/formtastic_changes.css?1429854677" media="screen" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        !window.jQuery && document.write(unescape("%3Cscript src='/javascripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        window.bjQuery = window.jQuery
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        !window.jQuery.ui && document.write(unescape("%3Cscript src='/javascripts/jquery-ui-1.8.16.custom.min.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+
+    <script src="https://t.infibeam.com/packages/bootstrap.js?1593009617" type="text/javascript"></script>
+    <script src="https://t.infibeam.com/javascripts/site-javascripts/0337207/global.js?1514273903" type="text/javascript"></script>
+    <script src="https://t.infibeam.com/exthemes/03/37/207/theme-0337207-1/javascripts/site.js?1515124972" type="text/javascript"></script>
+    <script type="text/javascript">
+        !window.JSON && document.write(unescape('%3Cscript src="https://t.infibeam.com/javascripts/json2.js?1429854677" type="text/javascript"%3E%3C/script%3E'));
+    </script>
+
+
+    <div class="review_purchase_loader ajax-loader" style="display: none;"></div>
+
+    <script type="text/javascript">
+        bjQuery(document).ready(function($) {
+
+
+
+            // TRIGGER EVENT TO SHOW ADD TO CART AS POPUP
+            effect_options = null
+            if (effect_options && effect_options.add_to_cart_popup) {
+                $(document).trigger('add_to_cart_popup_effect', effect_options);
+            }
+            // END
+
+            //DYNAMICALLY SET HEADER BY USING USER DETAILS STORED IN COOKIES (HELPS FOR CACHED PAGES).
+            //RAILS CACHE OPTION :LAYOUT => FALSE DOES NOT WORK ON PAGES/TEMPLATES USING CONTENT_FOR TAGS CURRENTLY.
+            var username;
+            if ((username = $.cookies.get("username")) != null) {
+                username = username.toString().replace(/\+/g, " ");
+                var login_msg = "<a class='login-msg'>Hello $$username</a> |  <a href=\"/logout\" class=\"logout\">Logout</a>"
+                $(document).trigger("logged-in", [{
+                    "name": username,
+                    "email": $.cookies.get("user_email")
+                }, login_msg.replace('$$username', username)]);
+            } else {
+                $(document).trigger("logged-out");
+            }
+
+
+
+            // END
+
+
+
+
+            $(document).trigger("show-cart-details", {
+                "show_on_hover": {
+                    "item_count_limit": 0,
+                    "carousel": {
+                        "enabled": false,
+                        "options": {
+                            "vertical": false,
+                            "visible": "",
+                            "scroll": ""
+                        }
+                    },
+                    "enabled": true,
+                    "item_details": {
+                        "delete_confirmation": false,
+                        "image": true,
+                        "delete_item": true,
+                        "quantity": true,
+                        "title": true,
+                        "price": true
+                    }
+                },
+                "total_quantity": false,
+                "total_amount": false
+            });
+
+
+
+            var rpQtip = $('<div></div>').qtip({
+                id: "review_purchase",
+                content: {
+                    text: "<div></div>",
+                    title: {
+                        text: "Please Review Your Previous Order",
+                        button: 'Close'
+                    }
+                },
+                position: {
+                    my: 'center',
+                    at: 'center',
+                    target: $(window)
+                }
+            });
+
+        });
+    </script>
+
+
+
+    <!-- START : Google Analytics -->
+
+
+
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-2515569-29', 'auto');
+
+
+        ga('require', 'displayfeatures');
+
+        ga('send', 'pageview');
+    </script>
+
+
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "translation missing: en, $t$website, schema, name",
+            "url": "http://phonestore1.buildabazaar.ooo",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "http://phonestore1.buildabazaar.ooo/search?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        }
+    </script>
+
+
+
+
+
+
+</head>
+
+
+
+<!--[if lt IE 7 ]> <body class='responsive  ie6'> <![endif]-->
+<!--[if IE 7 ]>    <body class='responsive  ie7'> <![endif]-->
+<!--[if IE 8 ]>    <body class='responsive  ie8'> <![endif]-->
+<!--[if IE 9 ]>    <body class='responsive  ie9'> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+
+<body class='responsive '>
+    <!--<![endif]-->
+
+
+    <noscript><span class='notice' style="font-size:2em; display: block;">
+        This site uses Javascript. Your browser either
+        doesn't support Javascript or you have it turned off.
+        To see this page as it is meant to appear please use
+        a Javascript enabled browser.</span></noscript>
+
+
+
+
+    <div id="page" class="f-cod f-relateditems f-internationalshipping f-fb_con f-fb_connect f-accounts_tab f-infibeam_listing f-new_browse_node_urls_in_sdp_and_search f-reviews f-cart_details_in_header f-crazysort f-quick_view f-layout_change_enabled f-additional_layouts_for_selection f-zipcode_serviceability_check_on_pdp f-go_to_top_btn f-carousel_type f-related_items f-one_page_checkout f-custom_default_variant f-enable_checkout_product_image f-universal_google_analytics f-conversion_tracking_code_snippet f-google_analytics_remarketing f-js_feature">
+
+
+
+
+
+
+        <div id="hd">
+
+
+
+
+            <div class="tp row_wrapper" style="background:#000;margin-top: -158px;">
+                <div class="hero-unit row visible-md visible-lg">
+
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="html-widget header _widget clearfix">
+                            <div class="trans">
+                                <div class="col-lg-2 logo-top"><a href="https://www.buildabazaar.ooo/" target="_blank" rel="noopener"><img src="https://t.infibeam.com/img/shrd/html_widget_images/63/80/371/987b05c313f1f_bablogo.png.999xx.png" alt="" width="100%" /></a></div>
+                                <div class="col-lg-9 frm">
+                                    <div class="frm_wrap">
+                                        <div class="container" style="max-width: 100%; width: 100%; padding-left: 0px; padding-right: 0px;">
+                                            <div class="row" style="max-width: 100%; margin-right: 0px; margin-left: 0px;">
+                                                <div class="col-sm-12 col-xs-12">
+                                                    <div id="errorSummary" class="col-sm-12" style="display: none;">&nbsp;</div>
+                                                    <div class="panel">
+                                                        <div class="panel-body">
+                                                            <div class="loader" style="display: none;">&nbsp;</div>
+                                                            <h4 class="modal-title">Get Started with <span class="">15 days FREE</span> trial</h4>
+                                                            <div style="margin-top: 40px; display: inline;"><a href="https://www.buildabazaar.ooo/sites/new?plan=silver&amp;tj" target="_blank" rel="noopener"><img src="https://t.infibeam.com/img/html_widget_images/41411/e7d6bae3bde7a_04.png.989xx.png" /></a>                                                                <a href="https://www.buildabazaar.ooo/sites/new?plan=gold&amp;tj" target="_blank" rel="noopener"><img src="https://t.infibeam.com/img/html_widget_images/41411/cbda5c9936f39_05.png.989xx.png" /></a>                                                                <a href="https://www.buildabazaar.ooo/sites/new?plan=gold_plus&amp;tj" target="_blank" rel="noopener"><img src="https://t.infibeam.com/img/html_widget_images/41411/908ef674592d8_06.png.989xx.png" /></a>                                                                <a href="https://www.buildabazaar.ooo/contactus?category=platinum_quote&amp;tj" target="_blank" rel="noopener"><img src="https://t.infibeam.com/img/html_widget_images/41411/b9782e44f4d10_07.png.989xx.png" /></a></div>
+                                                            <form id="coffeeFormone" class="form-horizontal" style="display: none;" method="post">
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-12 col-xs-12"><input id="store_name" class="form-control" maxlength="50" name="store_name" type="text" placeholder="Your store name" /></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-12 col-xs-12"><input id="email_address" class="form-control" name="email_address" type="text" placeholder="Email address" /></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-12 col-xs-12"><input id="phone_number" class="form-control phone_number" name="phone_number" type="text" placeholder="Mobile number" /></div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="col-sm-12 col-xs-12"><button class="btn btn-red" name="submit" type="submit" value="Sumbit">Create your store</button></div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/javascript">
+                                        // <![CDATA[
+                                        $.validator.setDefaults({
+                                            submitHandler: function() {
+                                                $("#errorSummary").html("");
+                                                $(".loader").show();
+
+                                                $.ajax({
+                                                    url: 'https://magentoatdrc.com/foodsp1form/validate_and_save.php',
+                                                    type: 'POST',
+                                                    data: $("#coffeeFormone").serialize(),
+                                                    async: true,
+                                                    success: function(response) {
+                                                        //$("#errorSummary").html(response);
+                                                        $("#coffeeFormone").trigger("reset");
+                                                        window.location.href = 'http://www.buildabazaar.ooo/pricing';
+                                                    },
+                                                    error: function(response, error) {
+                                                        $("#coffeeFormone").trigger("reset");
+                                                        $("#errorSummary").html("Oops!Something went wrong. Try again.");
+                                                    },
+                                                    complete: function() {
+                                                        $(".loader").hide();
+                                                    }
+                                                });
+                                            }
+                                        });
+                                        $(document).ready(function() {
+                                            $.validator.addMethod("validate_email", function(value, element) {
+                                                if (/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value)) {
+                                                    return true;
+                                                } else {
+                                                    return false;
+                                                }
+                                            }, "Please enter a valid email address.");
+                                            $("#coffeeFormone").validate({
+                                                rules: {
+                                                    store_name: {
+                                                        required: false,
+                                                        maxlength: 50
+                                                    },
+                                                    email_address: {
+                                                        required: false,
+                                                        validate_email: true
+                                                    },
+                                                    phone_number: {
+                                                        required: false,
+                                                    }
+                                                },
+                                                messages: {
+                                                    store_name: {
+                                                        maxlength: "Only 50 characters are allowed."
+                                                    },
+                                                    email_address: "Please enter a valid email address."
+                                                },
+                                                errorElement: "em",
+                                                errorPlacement: function(error, element) {
+                                                    // Add the `help-block` class to the error element
+                                                    error.addClass("help-block");
+                                                    if (element.prop("type") === "checkbox") {
+                                                        error.insertAfter(element.parent("label"));
+                                                    } else {
+                                                        error.insertAfter(element);
+                                                    }
+                                                },
+                                                highlight: function(element, errorClass, validClass) {
+                                                    $(element).parents(".col-sm-5").addClass("has-error").removeClass("has-success");
+                                                },
+                                                unhighlight: function(element, errorClass, validClass) {
+                                                    $(element).parents(".col-sm-5").addClass("has-success").removeClass("has-error");
+                                                }
+                                            });
+
+                                            $('.phone_number').on("keypress", function(event) {
+                                                var inputValue = event.which;
+                                                if ((inputValue != 46 || $(this).val().indexOf('.') != -1) && inputValue != 0 && inputValue != 8 && (inputValue < 48 || inputValue > 57)) {
+                                                    if (inputValue != 43) {
+                                                        event.preventDefault();
+                                                    }
+                                                }
+                                            });
+                                        });
+                                        // ]]>
+                                    </script>
+                                </div>
+                                <div class="col-lg-1 cls_btn"><button class="close">Close</button></div>
+                            </div>
+                            <style>
+                                < !-- .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group .form-control {
+                                    margin: 0px 24px 0px 0px;
+                                    width: 190px;
+                                    max-width: 100%;
+                                    border: 0px none;
+                                    border-radius: 4px;
+                                    box-shadow: 0px 0px 0px #FFF;
+                                    height: 45px;
+                                }
+
+                                .tp .trans .form-horizontal .form-group {
+                                    display: inline-block !important;
+                                }
+
+                                .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group {
+                                    margin-bottom: 0px;
+                                }
+
+                                .tp .form-horizontal .form-group {
+                                    margin-right: -15px;
+                                    margin-left: -15px;
+                                }
+
+                                .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone {
+                                    text-align: center;
+                                }
+
+                                .tp .trans {
+                                    position: absolute;
+                                    top: -107px;
+                                    left: 0px;
+                                    width: 100%;
+                                    background-color: #202020 !important;
+                                }
+
+                                @media only screen and (min-width: 1025px) {
+                                    #hd {
+                                        margin-top: 107px;
+                                    }
+                                }
+
+                                .tp .close {
+                                    background: transparent url("https://t.infibeam.com/img/shrd/html_widget_images/71/41/068/3b56273a4538c_closebtn.png.999xx.png") no-repeat scroll 0% 0% !important;
+                                    font-size: 0px;
+                                    border-radius: 0px;
+                                    margin: 0px auto !important;
+                                    width: 24px;
+                                    height: 24px;
+                                    opacity: 1;
+                                    min-width: 24px;
+                                }
+
+                                .cls_btn {
+                                    display: flex;
+                                    text-align: center;
+                                }
+
+                                .tp .trans h4 {
+                                    color: #FFF;
+                                    font-size: 15px;
+                                    margin-top: 13px;
+                                    margin-left: 0px;
+                                    text-align: left;
+                                    letter-spacing: 2px;
+                                    font-weight: 500;
+                                    /* text-transform: uppercase; */
+                                    display: inline-block;
+                                    line-height: 62px;
+                                }
+
+                                .tp .panel-body a {
+                                    margin-left: 9px;
+                                }
+
+                                .tp .panel-body {
+                                    padding: 6px;
+                                }
+
+                                .tp .frm,
+                                .tp .panel {
+                                    background-color: #202020 !important;
+                                    margin-bottom: 18px;
+                                    height: 87px;
+                                }
+
+                                .tp .logo-top {
+                                    background: #000000;
+                                    height: 107px;
+                                    padding-top: 21px;
+                                }
+
+                                .cls_btn {
+                                    background: #000000;
+                                    height: 107px;
+                                    padding-top: 41px;
+                                }
+
+                                .tp .trans .btn {
+                                    height: 43px;
+                                }
+
+                                .tp .trans h4 span {
+                                    color: #ff3939;
+                                    font-weight: 600;
+                                }
+
+                                .tp .frm .btn {
+                                    background: #F25E04 none repeat scroll 0% 0%;
+                                    font-size: 14px;
+                                    font-weight: 600 !important;
+                                    width: auto;
+                                    max-width: 100%;
+                                    float: right;
+                                    padding: 10px 16px;
+                                    border-radius: 8px;
+                                    text-transform: none;
+                                    text-transform: uppercase;
+                                }
+
+                                @media only screen and (min-width: 1600px) and (max-width: 1600px) {
+                                    .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group .form-control {
+                                        width: 265px;
+                                    }
+                                }
+
+                                @media only screen and (min-width: 1366px) and (max-width: 1366px) {
+                                    .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group .form-control {
+                                        width: 206px;
+                                    }
+                                }
+
+                                @media only screen and (min-width: 1920px) and (max-width: 1920px) {
+                                    .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group .form-control {
+                                        width: 343px;
+                                    }
+                                }
+
+                                .tp .trans .frm_wrap .row>div.col-sm-12 .panel .panel-body #coffeeFormone .form-group .form-control {
+                                    font-size: 16px;
+                                }
+
+                                .tp #email_address-error {
+                                    display: none !important;
+                                }
+
+                                -->
+                            </style>
+                            <script type="text/javascript">
+                                // <![CDATA[
+                                $(document).ready(function() {
+                                    $("button").click(function() {
+                                        $("div#hd").css("margin-top", "0px");
+                                    });
+                                });
+                                // ]]>
+                            </script>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class=" row">
+
+
+                <div class=" col-md-12 col-sm-12 col-xs-12">
+
+                    <div class="html-widget header _widget clearfix">
+                        <div class="top_menu hidden-xs">
+                            <p class="left_side"><a href="#">Welcome to our shop!</a> <span class="right_link"><a href="/wish-list">My Wishlist</a> | <a href="/checkout">Check out</a> | <a href="/login">Log in</a> </span></p>
+                        </div>
+                        <div class="right_icon hidden-xs"><a class="face_icon" href="login.html"><em class="fa fa-user">&nbsp;</em></a> <a class="shop_icon shopping_cart hidden-xs items-present shopping-cart" href="wish-list.html"><span class="fa fa-shopping-cart">&nbsp;</span></a></div>
+                        <style>
+                            < !-- .right_link {
+                                display: none;
+                            }
+
+                            @media only screen and (min-width:991px) and (max-width:1024px) {
+                                #hd .search-bar {
+                                    left: -95px;
+                                }
+                            }
+
+                            -->
+                        </style>
+                        <style>
+                            < !-- @media only screen and (min-width:1350px) and (max-width:1921px) {
+                                .summary-popup {
+                                    left: 58.2% !important;
+                                }
+                            }
+
+                            -->
+                        </style>
+                    </div>
+
+                    <div class="advanced-header-widget header _widget clearfix">
+
+
+
+                        <div class='logo-top-links'>
+                            <div class='row'>
+                                <div class='col-md-3 col-sm-3'>
+                                    <div class='logo'>
+                                        <a href="index.html" title="home"><br><h4 style="margin-left: 40px;">I-TECH</h4>
+                                            <h6 style="margin-left:40px;margin-top:-10px;">MOBILES</h6><!-- <img src='https://t.infibeam.com/img/shrd/lookandfeel/03/37/207/3076c5ead51c2_defaultlogo.png.999xx.png' alt='phonestore' title='home' /> --></a>
+                                    </div>
+                                </div>
+                                <div class='col-md-9 col-sm-9'>
+                                    <div class='top-links'>
+                                        <a href="about_us.html" class=" about-us">about us</a> | 
+                                        <a href="contact_us.html" class=" contact-us">contact us</a> | 
+                                        
+                                        <a href="checkout.html" class=" checkout">Checkout</a>| 
+                                        <a href="login.html" class=" login">Login</a>
+                                    </div>
+                                    <div class="row search-wrapper">
+                                        <div class="col-md-3 col-sm-3 "></div>
+                                        <div class="col-md-9 col-sm-9 search-bar-container">
+                                            <div class="search-bar">
+                                                <form action="/search" class="input-group" id="search" method="get">
+                                                    <span class="label">Search</span>
+                                                    <span class="input-group-btn search-category-container">
+                <select class="search-category"></select>
+              </span>
+
+                                                    <input class="text" id="search-input" name="q" type="text" />
+
+                                                    <span class="input-group-btn search-go-container">
+                <input class="search-go" type="submit" value="GO" />
+              </span>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class='header-menu'>
+                            <nav class="navbar navbar-default" role="navigation">
+
+                                <div class="navbar-header">
+
+                                    <button class="navbar-toggle navbar-toggle-collapse navbar-menu-toggle" data-target="#nav-menu-1332617" data-toggle="collapse" type="button">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+                                </div>
+
+                                <div class="navbar-collapse collapse" id="nav-menu-1332617">
+
+                                    <ul class="nav navbar-nav">
+
+
+
+
+                                        <li class="dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown">Mobiles<b class="caret"></b></a>
+
+                                            
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+        <div id="bd" class="clearfix">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div id="content-slot">
+
+                <div class=" row">
+                    <div class="page-content col-md-12 col-sm-12">
+
+
+                        <div class="contact-us-page">
+
+                            <h3 class="section-header">Contact Us</h3>
+
+
+
+                            
+
+                            <form action="/contact_us" class="formtastic contact_us" id="new_contact_us" method="post">
+                                <div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="rUFwNy17rrPASxGB86uLHtKelE2gcBwfOeS6qjyhRds=" /></div>
+                                <fieldset class="inputs">
+                                    <ol>
+                                        <li class="string required" id="contact_us_name_input"><label for="contact_us_name">Name<abbr title="required">*</abbr></label><input class="text" id="contact_us_name" maxlength="255" name="contact_us[name]" type="text" /></li>
+                                        <li class="email required" id="contact_us_email_input"><label for="contact_us_email">Email<abbr title="required">*</abbr></label><input class="text" id="contact_us_email" maxlength="255" name="contact_us[email]" type="text" /></li>
+                                        <li class="string optional" id="contact_us_city_input"><label for="contact_us_city">City</label><input class="text" id="contact_us_city" maxlength="255" name="contact_us[city]" type="text" /></li>
+                                        <li class="string optional" id="contact_us_state_input"><label for="contact_us_state">State</label><input class="text" id="contact_us_state" maxlength="255" name="contact_us[state]" type="text" /></li>
+                                        <li class="country optional" id="contact_us_country_input"><label for="contact_us_country">Country</label><select class="text" id="contact_us_country" name="contact_us[country]"><option value="IN">India</option>
+<option value="" disabled="disabled">-------------</option>
+<option value="AF">Afghanistan</option>
+<option value="AX">Aland Islands</option>
+<option value="AL">Albania</option>
+<option value="DZ">Algeria</option>
+<option value="AS">American Samoa</option>
+<option value="AD">Andorra</option>
+<option value="AO">Angola</option>
+<option value="AI">Anguilla</option>
+<option value="AQ">Antarctica</option>
+<option value="AG">Antigua and Barbuda</option>
+<option value="AR">Argentina</option>
+<option value="AM">Armenia</option>
+<option value="AW">Aruba</option>
+<option value="AU">Australia</option>
+<option value="AT">Austria</option>
+<option value="AZ">Azerbaijan</option>
+<option value="BS">Bahamas</option>
+<option value="BH">Bahrain</option>
+<option value="BD">Bangladesh</option>
+<option value="BB">Barbados</option>
+<option value="BY">Belarus</option>
+<option value="BE">Belgium</option>
+<option value="BZ">Belize</option>
+<option value="BJ">Benin</option>
+<option value="BM">Bermuda</option>
+<option value="BT">Bhutan</option>
+<option value="BO">Bolivia</option>
+<option value="BA">Bosnia and Herzegovina</option>
+<option value="BW">Botswana</option>
+<option value="BV">Bouvet Island</option>
+<option value="BR">Brazil</option>
+<option value="IO">British Indian Ocean Territory</option>
+<option value="BN">Brunei Darussalam</option>
+<option value="BG">Bulgaria</option>
+<option value="BF">Burkina Faso</option>
+<option value="BI">Burundi</option>
+<option value="KH">Cambodia</option>
+<option value="CM">Cameroon</option>
+<option value="CA">Canada</option>
+<option value="CV">Cape Verde</option>
+<option value="KY">Cayman Islands</option>
+<option value="CF">Central African Republic</option>
+<option value="TD">Chad</option>
+<option value="CL">Chile</option>
+<option value="CN">China</option>
+<option value="CX">Christmas Island</option>
+<option value="CC">Cocos (Keeling) Islands</option>
+<option value="CO">Colombia</option>
+<option value="KM">Comoros</option>
+<option value="CG">Congo</option>
+<option value="CD">Congo, the Democratic Republic of the</option>
+<option value="CK">Cook Islands</option>
+<option value="CR">Costa Rica</option>
+<option value="CI">Cote D'ivoire</option>
+<option value="HR">Croatia</option>
+<option value="CU">Cuba</option>
+<option value="CY">Cyprus</option>
+<option value="CZ">Czech Republic</option>
+<option value="DK">Denmark</option>
+<option value="DJ">Djibouti</option>
+<option value="DM">Dominica</option>
+<option value="DO">Dominican Republic</option>
+<option value="EC">Ecuador</option>
+<option value="EG">Egypt</option>
+<option value="SV">El Salvador</option>
+<option value="GQ">Equatorial Guinea</option>
+<option value="ER">Eritrea</option>
+<option value="EE">Estonia</option>
+<option value="ET">Ethiopia</option>
+<option value="FK">Falkland Islands (Malvinas)</option>
+<option value="FO">Faroe Islands</option>
+<option value="FJ">Fiji</option>
+<option value="FI">Finland</option>
+<option value="FR">France</option>
+<option value="GF">French Guiana</option>
+<option value="PF">French Polynesia</option>
+<option value="TF">French Southern Territories</option>
+<option value="GA">Gabon</option>
+<option value="GM">Gambia</option>
+<option value="GE">Georgia</option>
+<option value="DE">Germany</option>
+<option value="GH">Ghana</option>
+<option value="GI">Gibraltar</option>
+<option value="GR">Greece</option>
+<option value="GL">Greenland</option>
+<option value="GD">Grenada</option>
+<option value="GP">Guadeloupe</option>
+<option value="GU">Guam</option>
+<option value="GT">Guatemala</option>
+<option value="GG">Guernsey</option>
+<option value="GN">Guinea</option>
+<option value="GW">Guinea-Bissau</option>
+<option value="GY">Guyana</option>
+<option value="HT">Haiti</option>
+<option value="HM">Heard Island and Mcdonald Islands</option>
+<option value="VA">Holy See (Vatican City State)</option>
+<option value="HN">Honduras</option>
+<option value="HK">Hong Kong</option>
+<option value="HU">Hungary</option>
+<option value="IS">Iceland</option>
+<option value="IN">India</option>
+<option value="ID">Indonesia</option>
+<option value="IR">Iran, Islamic Republic of</option>
+<option value="IQ">Iraq</option>
+<option value="IE">Ireland</option>
+<option value="IM">Isle of Man</option>
+<option value="IL">Israel</option>
+<option value="IT">Italy</option>
+<option value="JM">Jamaica</option>
+<option value="JP">Japan</option>
+<option value="JE">Jersey</option>
+<option value="JO">Jordan</option>
+<option value="KZ">Kazakhstan</option>
+<option value="KE">Kenya</option>
+<option value="KI">Kiribati</option>
+<option value="KP">Korea, Democratic People's Republic of</option>
+<option value="KR">Korea, Republic of</option>
+<option value="KV">Kosovo</option>
+<option value="KW">Kuwait</option>
+<option value="KG">Kyrgyzstan</option>
+<option value="LA">Lao People's Democratic Republic</option>
+<option value="LV">Latvia</option>
+<option value="LB">Lebanon</option>
+<option value="LS">Lesotho</option>
+<option value="LR">Liberia</option>
+<option value="LY">Libyan Arab Jamahiriya</option>
+<option value="LI">Liechtenstein</option>
+<option value="LT">Lithuania</option>
+<option value="LU">Luxembourg</option>
+<option value="MO">Macao</option>
+<option value="MK">Macedonia, the Former Yugoslav Republic of</option>
+<option value="MG">Madagascar</option>
+<option value="MW">Malawi</option>
+<option value="MY">Malaysia</option>
+<option value="MV">Maldives</option>
+<option value="ML">Mali</option>
+<option value="MT">Malta</option>
+<option value="MH">Marshall Islands</option>
+<option value="MQ">Martinique</option>
+<option value="MR">Mauritania</option>
+<option value="MU">Mauritius</option>
+<option value="YT">Mayotte</option>
+<option value="MX">Mexico</option>
+<option value="FM">Micronesia, Federated States of</option>
+<option value="MD">Moldova, Republic of</option>
+<option value="MC">Monaco</option>
+<option value="MN">Mongolia</option>
+<option value="ME">Montenegro</option>
+<option value="MS">Montserrat</option>
+<option value="MA">Morocco</option>
+<option value="MZ">Mozambique</option>
+<option value="MM">Myanmar</option>
+<option value="NA">Namibia</option>
+<option value="NR">Nauru</option>
+<option value="NP">Nepal</option>
+<option value="NL">Netherlands</option>
+<option value="AN">Netherlands Antilles</option>
+<option value="NC">New Caledonia</option>
+<option value="NZ">New Zealand</option>
+<option value="NI">Nicaragua</option>
+<option value="NE">Niger</option>
+<option value="NG">Nigeria</option>
+<option value="NU">Niue</option>
+<option value="NF">Norfolk Island</option>
+<option value="MP">Northern Mariana Islands</option>
+<option value="NO">Norway</option>
+<option value="OM">Oman</option>
+<option value="PK">Pakistan</option>
+<option value="PW">Palau</option>
+<option value="PS">Palestinian Territory, Occupied</option>
+<option value="PA">Panama</option>
+<option value="PG">Papua New Guinea</option>
+<option value="PY">Paraguay</option>
+<option value="PE">Peru</option>
+<option value="PH">Philippines</option>
+<option value="PN">Pitcairn</option>
+<option value="PL">Poland</option>
+<option value="PT">Portugal</option>
+<option value="PR">Puerto Rico</option>
+<option value="QA">Qatar</option>
+<option value="RE">Reunion</option>
+<option value="RO">Romania</option>
+<option value="RU">Russian Federation</option>
+<option value="RW">Rwanda</option>
+<option value="SH">Saint Helena</option>
+<option value="KN">Saint Kitts and Nevis</option>
+<option value="LC">Saint Lucia</option>
+<option value="PM">Saint Pierre and Miquelon</option>
+<option value="VC">Saint Vincent and the Grenadines</option>
+<option value="WS">Samoa</option>
+<option value="SM">San Marino</option>
+<option value="ST">Sao Tome and Principe</option>
+<option value="SA">Saudi Arabia</option>
+<option value="SN">Senegal</option>
+<option value="RS">Serbia</option>
+<option value="SC">Seychelles</option>
+<option value="SL">Sierra Leone</option>
+<option value="SG">Singapore</option>
+<option value="SK">Slovakia</option>
+<option value="SI">Slovenia</option>
+<option value="SB">Solomon Islands</option>
+<option value="SO">Somalia</option>
+<option value="ZA">South Africa</option>
+<option value="GS">South Georgia and the South Sandwich Islands</option>
+<option value="ES">Spain</option>
+<option value="LK">Sri Lanka</option>
+<option value="SD">Sudan</option>
+<option value="SR">Suriname</option>
+<option value="SJ">Svalbard and Jan Mayen</option>
+<option value="SZ">Swaziland</option>
+<option value="SE">Sweden</option>
+<option value="CH">Switzerland</option>
+<option value="SY">Syrian Arab Republic</option>
+<option value="TW">Taiwan, Province of China</option>
+<option value="TJ">Tajikistan</option>
+<option value="TZ">Tanzania, United Republic of</option>
+<option value="TH">Thailand</option>
+<option value="TL">Timor-Leste</option>
+<option value="TG">Togo</option>
+<option value="TK">Tokelau</option>
+<option value="TO">Tonga</option>
+<option value="TT">Trinidad and Tobago</option>
+<option value="TN">Tunisia</option>
+<option value="TR">Turkey</option>
+<option value="TM">Turkmenistan</option>
+<option value="TC">Turks and Caicos Islands</option>
+<option value="TV">Tuvalu</option>
+<option value="UG">Uganda</option>
+<option value="UA">Ukraine</option>
+<option value="AE">United Arab Emirates</option>
+<option value="GB">United Kingdom</option>
+<option value="US">United States</option>
+<option value="UM">United States Minor Outlying Islands</option>
+<option value="UY">Uruguay</option>
+<option value="UZ">Uzbekistan</option>
+<option value="VU">Vanuatu</option>
+<option value="VE">Venezuela</option>
+<option value="VN">Viet Nam</option>
+<option value="VG">Virgin Islands, British</option>
+<option value="VI">Virgin Islands, U.S.</option>
+<option value="WF">Wallis and Futuna</option>
+<option value="EH">Western Sahara</option>
+<option value="YE">Yemen</option>
+<option value="ZM">Zambia</option>
+<option value="ZW">Zimbabwe</option></select></li>
+                                        <li class="string optional" id="contact_us_mobile_number_input"><label for="contact_us_mobile_number">Mobile number</label><input class="text" id="contact_us_mobile_number" maxlength="255" name="contact_us[mobile_number]" type="text" /></li>
+                                        <li class="string optional" id="contact_us_landline_input"><label for="contact_us_landline">Landline</label><input class="text" id="contact_us_landline" maxlength="255" name="contact_us[landline]" type="text" /></li>
+
+                                        <li class="select required" id="contact_us_category_input"><label for="contact_us_category">Category<abbr title="required">*</abbr></label><select id="contact_us_category" name="contact_us[category]"><option value="general" selected="selected">General</option>
+<option value="bulk">Bulk</option>
+<option value="corporate">Corporate</option>
+<option value="merchant">Merchant</option>
+<option value="advertise">Advertise</option>
+<option value="feedback">Feedback</option></select></li>
+                                        <li class="text optional" id="contact_us_message_input"><label for="contact_us_message">Message</label><textarea id="contact_us_message" name="contact_us[message]" rows="20"></textarea></li>
+                                        <input id="Emails" name="Emails" type="hidden" />
+                                    </ol>
+                                </fieldset>
+
+
+
+                                <fieldset class="buttons">
+                                    <ol>
+                                        <input class="button" id="contact_us_submit" name="commit" type="submit" value="Submit" />
+                                    </ol>
+                                </fieldset>
+                            </form>
+                            <br/><br/>
+                            <h3 class='section-header contact-info-title'>Contact Information</h3>
+                            <table class='contact-info-table'>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>i-tech_mobiles@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td>Phone:</td>
+                                    <td>+91-9176120734</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                        <style>
+                            .contact-us-page .country.optional {
+                                width: 32%;
+                                display: none;
+                            }
+                        </style>
+
+                        <script type="text/javascript">
+                            $('#new_contact_us').submit(function(e) {
+                                $('#Emails').remove();
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <!-- CONFIG TO ADD JS_FEATURES -->
+
+
+
+
+
+
+
+
+
+        <!-- END -->
+
+        <div id="ft" class='clearfix'>
+            <div id="ft-wrap">
+
+
+
+                <div class=" row">
+
+
+                    <div class=" col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="html-widget footer _widget clearfix">
+                            <style>
+                                < !-- .subscribe {
+                                    border: 1px dotted #cacaca;
+                                    padding: 30px 15px;
+                                    background: url(https://t.infibeam.com/img/html_widget_images/0135570/ffd64d7c2f063_contactsback.png.999xx.png) no-repeat -25px -10px #fff;
+                                    margin: 25px 0;
+                                }
+
+                                .subscribe h3 {
+                                    text-align: right;
+                                    color: #3f3f3f;
+                                    line-height: 37px;
+                                    font-size: 14px;
+                                    text-transform: uppercase;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+
+                                .email-bar {
+                                    background: none repeat scroll 0% 0% #fff;
+                                    height: 37px;
+                                    overflow: hidden;
+                                    z-index: 9999;
+                                    width: 100%;
+                                    margin: 0px 10px 0 0;
+                                    padding: 0px;
+                                    float: left;
+                                    border: 1px solid #DDD;
+                                }
+
+                                .input-group {
+                                    width: 100%;
+                                }
+
+                                .ss-item.ss-navigate {
+                                    width: 100%;
+                                }
+
+                                .email-bar #search-news input.text {
+                                    background: none repeat scroll 0px 0px transparent;
+                                    border: medium none;
+                                    color: #222 !important;
+                                    height: 37px;
+                                    margin: 0px;
+                                    max-width: 100%;
+                                    width: 100% !important;
+                                    position: relative;
+                                    text-align: left;
+                                    float: left;
+                                }
+
+                                .sbmit-btn .fa {
+                                    color: #4a720a;
+                                    font-size: 14px;
+                                    line-height: 35px;
+                                    text-align: left;
+                                    float: left;
+                                }
+
+                                .sbmit-btn {
+                                    background-color: #7fb728;
+                                    border: 1px solid #7fb728;
+                                    width: 100px;
+                                    height: 37px;
+                                    padding: 0 10px;
+                                    color: #FFF;
+                                    font-size: 10px;
+                                    margin: 0px;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    float: left;
+                                    line-height: 36px;
+                                    font-family: "Sintony", sans-serif;
+                                    text-transform: uppercase;
+                                    margin-right: 70px;
+                                    transition: all 0.3s ease-in-out 0s;
+                                }
+
+                                .sbmit-btn:hover {
+                                    color: #7fb728;
+                                    background: transparent;
+                                }
+
+                                .subscribe p {
+                                    font-size: 12px;
+                                    line-height: 18px;
+                                    color: #3f3f3f;
+                                    font-family: "Sintony", sans-serif;
+                                }
+
+                                @media only screen and (min-width:320px) and (max-width:767px) {
+                                    .sec2_txt4 {
+                                        clear: both;
+                                        text-align: center;
+                                    }
+                                    .subscribe {
+                                        margin: 0px 0px 10px;
+                                    }
+                                    .email-bar {
+                                        width: 100%;
+                                    }
+                                    .sbmit-btn {
+                                        width: 100% !important;
+                                        margin: 10px 0px;
+                                    }
+                                    .sbmit-btn .fa {
+                                        text-align: center;
+                                        float: none;
+                                    }
+                                }
+
+                                @media only screen and (min-width:768px) and (max-width:1023px) {
+                                    .sec2_txt4 {
+                                        clear: both;
+                                        text-align: center;
+                                    }
+                                    .subscribe {
+                                        padding: 15px 15px 5px;
+                                    }
+                                    .subscribe h3 {
+                                        font-size: 10px;
+                                    }
+                                    .subscribe p {
+                                        font-size: 10px;
+                                        line-height: 18px;
+                                    }
+                                    .sbmit-btn {
+                                        margin: 0px 10px 0px 0px;
+                                    }
+                                }
+
+                                -->
+                            </style>
+                            <style type="text/css">
+                                < !-- .ss-form-container,
+                                .ss-resp-card {
+                                    background-color: rgb(255, 255, 255);
+                                }
+
+                                .ss-form-entry {
+                                    padding: 0;
+                                }
+
+                                #ft #ft-wrap input[type='text'],
+                                #ft #ft-wrap input[type='email'] {
+                                    color: black;
+                                    width: 100% !important;
+                                    font-size: 12px !important;
+                                    background-color: #fff;
+                                    height: 35px;
+                                    margin: 0;
+                                    border: medium none !important;
+                                }
+
+                                #navigation-table {
+                                    border: none !important;
+                                }
+
+                                .ss-top-of-page {
+                                    display: none;
+                                }
+
+                                #ss-submit {
+                                    border: none !important;
+                                    vertical-align: middle;
+                                    text-transform: none;
+                                    font-family: Arial;
+                                    background-color: #429922;
+                                    height: 34px !important;
+                                    color: #fff;
+                                    font-weight: normal;
+                                    font-size: 16px;
+                                    padding: 3px 10px;
+                                    float: left;
+                                    width: 87px;
+                                    margin-right: 28px;
+                                    margin-top: -36px;
+                                }
+
+                                .ss-footer,
+                                .ss-response-footer {
+                                    background-color: rgb(255, 255, 255);
+                                }
+
+                                .ss-grid-row-odd {
+                                    background-color: rgb(242, 242, 242);
+                                }
+
+                                .ss-form-container,
+                                .ss-resp-card {
+                                    border-color: rgb(212, 212, 212);
+                                }
+
+                                .ss-form-title {
+                                    text-align: left;
+                                }
+
+                                .ss-form-title[dir="rtl"] {
+                                    text-align: right;
+                                }
+
+                                .ss-form-desc {
+                                    text-align: left;
+                                }
+
+                                .ss-form-desc[dir="rtl"] {
+                                    text-align: right;
+                                }
+
+                                .ss-header-image-container {
+                                    height: 0;
+                                }
+
+                                .ss-item {
+                                    font-size: 1.080rem;
+                                }
+
+                                .ss-choices {
+                                    font-size: 1.000rem;
+                                }
+
+                                .ss-record-username-message {
+                                    font-family: "Roboto";
+                                    color: rgb(119, 119, 119);
+                                    font-weight: 400;
+                                    font-size: 1.080rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-form-title {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 2.460rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-confirmation {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 2.460rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-page-title,
+                                .ss-section-title {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 1.845rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-form-desc,
+                                .ss-page-description,
+                                .ss-section-description {
+                                    font-family: "Roboto";
+                                    color: rgb(140, 140, 140);
+                                    font-weight: 400;
+                                    font-size: 1.080rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-resp-content {
+                                    font-family: "Roboto";
+                                    color: rgb(119, 119, 119);
+                                    font-weight: 400;
+                                    font-size: 1.080rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-q-title {
+                                    font-family: "Roboto";
+                                    color: #fff;
+                                    font-weight: 700;
+                                    font-size: 15px;
+                                    font-style: normal;
+                                    float: left;
+                                    margin-right: 10px;
+                                    height: 20px;
+                                    line-height: 30px;
+                                }
+
+                                .ss-embeddable-object-container .ss-q-title {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 700;
+                                    font-size: 1.845rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-q-help,
+                                .ss-q-time-hint {
+                                    font-family: "Roboto";
+                                    color: rgb(140, 140, 140);
+                                    font-weight: 400;
+                                    <meta content="text/html; charset=utf-8" http-equiv="Content-type" /><meta content="IE=10; chrome=1;" http-equiv="X-UA-Compatible" /><meta content="!" name="fragment" /><meta content="width=device-width" name="viewport" />font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-choice-label,
+                                .video-secondary-text,
+                                .ss-gridrow-leftlabel,
+                                .ss-gridnumber,
+                                .ss-scalenumber,
+                                .ss-leftlabel,
+                                .ss-rightlabel {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .error-message,
+                                .required-message,
+                                .ss-required-asterisk {
+                                    font-family: "Roboto";
+                                    color: rgb(196, 59, 29);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-send-email-receipt {
+                                    font-family: "Roboto";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-password-warning {
+                                    font-family: "Arial";
+                                    color: rgb(119, 119, 119);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: italic;
+                                }
+
+                                .disclaimer {
+                                    font-family: "Arial";
+                                    color: rgb(119, 119, 119);
+                                    font-weight: 400;
+                                    font-size: 0.850rem;
+                                    font-style: normal;
+                                }
+
+                                .ss-footer-content {
+                                    font-family: "Arial";
+                                    color: rgb(80, 80, 80);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .progress-label {
+                                    font-family: "Roboto";
+                                    color: rgb(140, 140, 140);
+                                    font-weight: 400;
+                                    font-size: 1.000rem;
+                                    font-style: normal;
+                                }
+
+                                .sub_btn {
+                                    border: none;
+                                    margin-top: -56px !important;
+                                    float: none;
+                                    width: 100%;
+                                    margin: 0;
+                                }
+
+                                .error,
+                                .required,
+                                .errorbox-bad {
+                                    border-color: rgb(196, 59, 29);
+                                }
+
+                                .jfk-progressBar-nonBlocking .progress-bar-thumb {
+                                    background-color: rgb(140, 140, 140);
+                                }
+
+                                .ss-logo-image {
+                                    background-image: url('//ssl.gstatic.com/docs/forms/forms_logo_small_dark.png');
+                                    background-size: 108px 21px;
+                                    width: 108px;
+                                    height: 21px;
+                                }
+
+                                @media screen and (-webkit-device-pixel-ratio: 2) {
+                                    .ss-logo-image {
+                                        background-image: url('//ssl.gstatic.com/docs/forms/forms_logo_small_dark_2x.png');
+                                    }
+                                }
+
+                                @media only screen and (min-width:768px) and (max-width: 1024px) {
+                                    #ft #ft-wrap input[type='text'],
+                                    #ft #ft-wrap input[type='email'] {
+                                        width: 100% !important;
+                                    }
+                                }
+
+                                -->
+                            </style>
+                            <div class="foo">
+                                <div class="foo">
+                                    <div class="foo_sec_2">
+                                        <div class=" sec2_txt1 col-xs-12 col-sm-4 col-md-4">
+                                            <h2>Contact Us</h2>
+                                            <p>NO.833, Gokul Bagh, Poonamallee High Rd, Arumbakkam, Chennai, Tamil Nadu 600106<br />Tel: +91-9176120734<br />Email: i-tech_mobiles@gmail.com</p>
+                                            <div class="social_brand hidden-xs"><a href="https://www.facebook.com"><em class="fa fa-facebook">&nbsp;</em></a> <a href="https://twitter.com"><em class="fa fa-twitter">&nbsp;</em></a> <a href="https://google.com"><em class="fa fa-google-plus">&nbsp;</em></a></div>
+                                        </div>
+                                        
+                                        <div class=" sec2_txt2 col-xs-12 col-sm-4 col-md-2" style="margin-left:250px">
+                                            <h2>MY ACCOUNT</h2>
+                                            <p><a href="login.html">My Account</a></p>
+                                            <p><a href="checkout.html">Wish List</a></p>
+                                            <p><a href="contact_us.html">Contact Us</a></p>
+                                        </div>
+                                        
+                                            
+                                            
+                                            
+                                            <!--form-code-->
+                                            <div id="testing" style="display: none; //background: #ffffff; color: #616161; border: 1px solid #616161; padding: 5px; text-align: center; font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin: 10px 0px 10px 0px;"><strong>Thank You. We promise you'll never be missed out.</strong></div>
+                                            <p>&nbsp;</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <link rel="stylesheet" type="text/css" href="/static/forms/client/css/3145455273-mobile_formview_st_ltr.css" />
+                            <div class="foo">
+                                <div class="foo_sec_2">
+                                    <div class=" sec2_txt2 col-xs-12 col-sm-4 col-md-4">
+                                        <p>&nbsp;</p>
+                                        <div class="ss-form-container">
+                                            <div class="ss-header-image-container">&nbsp;</div>
+                                            <div class="ss-top-of-page">&nbsp;</div>
+                                            <form id="ss-form" style="margin-top: -35px; // margin-left: 400px;" action="https://docs.google.com/a/infibeam.net/forms/d/e/1FAIpQLSeVW-anptI8vEw2RpoVAIkO58gS6Vb7djshAkC3FjozoKxmMQ/formResponse" method="POST" target="hidden_iframe"><iframe id="hidden_iframe" style="height: 0px; width: 0px; display: none;" name="hidden_iframe" width="0" height="0"></iframe>
+                                                <script type="text/javascript">
+                                                    // <![CDATA[
+                                                    function mycustom() {
+                                                        var y = document.getElementById("entry_2139602500");
+                                                        var email = y.value;
+                                                        var a = email.indexOf("@");
+                                                        var b = email.lastIndexOf(".");
+                                                        if (a < 1 || b < a + 2 || b + 2 >= email.length || email == "") {
+                                                            document.getElementById("valid_email").style.display = "block";
+                                                            y.focus();
+                                                            return false;
+                                                        }
+                                                        document.getElementById("testing").style.display = "block";
+                                                        document.getElementById("valid_email").style.display = "none";
+                                                        document.getElementById("ss-form").style.display = "none";
+                                                        document.getElementById("bethe").style.display = "none";
+
+                                                    }
+                                                    // ]]>
+                                                </script>
+                                                <div class="ss-form-question errorbox-good" style="margin-top: 40px;">
+                                                    <div class="ss-item  ss-text" dir="ltr">
+                                                        <div class="ss-form-entry email-bar mail_txt"><input id="entry_2139602500" class="mail_txt ss-q-short" dir="auto" title="" name="emailAddress" size="18px" type="text" value="ENTER YOUR EMAIL ID HERE" />
+                                                            <div id="454967190_errorMessage" class="error-message">&nbsp;</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input name="draftResponse" type="hidden" value="[,,&quot;-8441914816290092179&quot;]
+                                                      " /><input name="pageHistory" type="hidden" value="0" /><input name="fbzx" type="hidden" value="-8441914816290092179" />
+                                                <div class="ss-item ss-navigate" style="float: right;">
+                                                    <table id="navigation-table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td id="navigation-buttons" class="ss-form-entry goog-inline-block" dir="ltr" width="300"><input id="" class="jfk-button jfk-button-action sub_btn" name="SIGN UP" type="submit" value="    MAIL US" /></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <p>
+                                            <script type="text/javascript" src="/static/forms/client/js/1152951977-formviewer_prd.js"></script>
+                                            <script type="text/javascript">
+                                                // <![CDATA[
+                                                H5F.setup(document.getElementById('ss-form'));
+                                                _initFormViewer(
+                                                    "[100,,[]\n]\n");
+                                                // ]]>
+                                            </script>
+                                        </p>
+                                        <div id="valid_email" style="display: none; color: #fd1d12; margin-top: 0px; float: left;"><img style="height: 12px;" src="https://t.infibeam.com/img/html_widget_images/7367768/c9ea33ca881dc_1194985624696670932tasto10architettofran01.svg.med.png.999xx.png" alt="" />&nbsp;Please enter valid email address</div>
+                                    </div>
+                                </div>
+                                <div class="fooSec3">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                        <p>&copy; 2022 <a href="https://www.infibeam.com/"> I-TECH MOBILES</a> All Rights Reserved.<br />Created by HARIHARAN</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- WhatsHelp.io widget -->
+                            <p>
+                                <script type="text/javascript">
+                                    // <![CDATA[
+                                    (function() {
+                                        var options = {
+                                            facebook: "384446005350048", // Facebook page ID
+                                            whatsapp: "+919909039826", // WhatsApp number
+                                            email: "cs@buildabazaar.com", // Email
+                                            call: "079-67772245", // Call phone number
+                                            company_logo_url: "//storage.whatshelp.io/widget/3e/3e95/3e9510ba2a09be2c73f4a41ee5ee0391/26219573_384510888676893_5671902284092564299_n.png", // URL of company logo (png, jpg, gif)
+                                            greeting_message: "Hello, how may I help you? I am Your Store Creation Assistant.", // Text of greeting message
+                                            call_to_action: "Message us", // Call to action
+                                            button_color: "#FF6550", // Color of button
+                                            position: "right", // Position may be 'right' or 'left'
+                                            order: "facebook,call,email,whatsapp" // Order of buttons
+                                        };
+                                        var proto = document.location.protocol,
+                                            host = "whatshelp.io",
+                                            url = proto + "//static." + host;
+                                        var s = document.createElement('script');
+                                        s.type = 'text/javascript';
+                                        s.async = true;
+                                        s.src = url + '/widget-send-button/js/init.js';
+                                        s.onload = function() {
+                                            WhWidgetSendButton.init(host, proto, options);
+                                        };
+                                        var x = document.getElementsByTagName('script')[0];
+                                        x.parentNode.insertBefore(s, x);
+                                    })();
+                                    // ]]>
+                                </script>
+                            </p>
+                            <!-- /WhatsHelp.io widget -->
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class=" row" id="ft-powerby">
+                    <div class="text-right col-md-12 col-sm-12"><span>Powered by </span><a href='https://www.ia.ooo' target='_blank'>infibeam</a></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        bjQuery(document).trigger('page_end', {
+            "ip": "122.174.41.237"
+        })
+    </script>
+</body>
+
+</html>
